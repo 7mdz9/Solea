@@ -4,7 +4,7 @@
 
 This is a single-page static site. The page has no framework, no build step, and no production JavaScript beyond the countdown timer.
 
-The source design came from `Solea_Coming_Soon.html`. The visual design, copy, colors, typography, botanical corner flourishes, countdown structure, and launch target were preserved while the code was split into maintainable files.
+The source design came from `Solea_Coming_Soon.html`. The visual design, copy, colors, typography, countdown structure, and launch target were preserved while the code was split into maintainable files. The decorative corner arcs were later removed to keep scrolling behavior consistent across devices.
 
 ## Local Development
 
@@ -38,7 +38,7 @@ Do not start the server from `/Users/mohamed.alteneiji/Solea`. That parent folde
 
 `index.html`
 
-Owns the document structure, metadata, Google Fonts link, decorative inline botanical SVGs, logo image reference, countdown markup, and contact links. Edit this file for copy, metadata, or markup changes.
+Owns the document structure, metadata, Google Fonts link, logo image reference, countdown markup, and contact links. Edit this file for copy, metadata, or markup changes.
 
 `styles/main.css`
 
@@ -107,9 +107,8 @@ When the target time has passed, `scripts/countdown.js` adds `.launched` to `doc
 The base layout keeps the original desktop composition. Additional breakpoints cover common modern devices:
 
 - `max-width: 720px`: countdown remains 4 columns with tighter gaps, smaller numerals, and compact labels
-- `max-width: 480px`: mobile logo scales to about 30-40% viewport width, countdown stays in one row, contact details stack, corners shrink, and touch targets remain at least 44px tall
+- `max-width: 480px`: mobile logo scales to about 30-40% viewport width, countdown stays in one row, contact details stack, and touch targets remain at least 44px tall
 - `max-width: 380px`: the title has an extra small-screen guard
-- `721px-1024px`: tablet corner flourishes use a medium size
 - short-height tablet and desktop queries: vertical spacing, logo size, and countdown padding tighten so landscape tablets and 1280x800 laptops stay balanced
 
 Desktop viewports at 1440px and above keep the original full composition and the 880px content max width.
@@ -119,8 +118,6 @@ Desktop viewports at 1440px and above keep the original full composition and the
 The page is static and lightweight. CSS and JavaScript are loaded as external files for cacheability and maintainability. The script is deferred.
 
 Google Fonts keep the original font families but load only used weights with `display=swap`.
-
-The botanical SVGs remain inline because they are small, decorative, and not reused elsewhere. They are marked `aria-hidden`.
 
 The logo asset is external so the HTML stays small and the browser can cache it.
 

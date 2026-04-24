@@ -41,20 +41,6 @@
     opacity:0.35;
   }
 
-  /* Corner botanical flourishes */
-  .corner-frame{
-    position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:none;
-    width:100vw;height:100vh;height:100dvh;
-  }
-  .corner{
-    position:absolute;width:180px;height:180px;pointer-events:none;opacity:0.38;
-    transform-origin:center;backface-visibility:hidden;
-  }
-  .corner.tl{top:calc(28px + env(safe-area-inset-top));left:calc(28px + env(safe-area-inset-left));}
-  .corner.tr{top:calc(28px + env(safe-area-inset-top));right:calc(28px + env(safe-area-inset-right));transform:scaleX(-1);}
-  .corner.bl{bottom:calc(28px + env(safe-area-inset-bottom));left:calc(28px + env(safe-area-inset-left));transform:scaleY(-1);}
-  .corner.br{bottom:calc(28px + env(safe-area-inset-bottom));right:calc(28px + env(safe-area-inset-right));transform:scale(-1,-1);}
-
   .container{
     position:relative;z-index:2;
     text-align:center;max-width:880px;width:100%;
@@ -214,11 +200,6 @@
     .time-label{font-size:8px;letter-spacing:0.22em;}
     .logo{width:170px;height:170px;}
     .launch-line{margin-bottom:42px;}
-    .corner{width:100px;height:100px;}
-    .corner.tl{top:calc(16px + env(safe-area-inset-top));left:calc(16px + env(safe-area-inset-left));}
-    .corner.tr{top:calc(16px + env(safe-area-inset-top));right:calc(16px + env(safe-area-inset-right));}
-    .corner.bl{bottom:calc(16px + env(safe-area-inset-bottom));left:calc(16px + env(safe-area-inset-left));}
-    .corner.br{bottom:calc(16px + env(safe-area-inset-bottom));right:calc(16px + env(safe-area-inset-right));}
   }
   @media (max-width:480px){
     body{padding:36px 18px;}
@@ -238,13 +219,11 @@
     .support-btn{min-height:44px;padding:16px 30px;}
     .contact-details{gap:14px;flex-direction:column;}
     .contact-item{min-height:44px;}
-    .corner{width:clamp(76px,24vw,96px);height:clamp(76px,24vw,96px);}
   }
   @media (max-width:380px){
     .title{font-size:44px;}
   }
   @media (min-width:721px) and (max-width:1024px){
-    .corner{width:140px;height:140px;}
   }
   @media (min-width:721px) and (max-width:1024px) and (max-height:820px){
     body{padding:24px;}
