@@ -5,7 +5,6 @@ const TARGET = new Date("2026-05-01T00:00:00+04:00");
     m: document.getElementById("minutes"),
     s: document.getElementById("seconds"),
   };
-  const container = document.getElementById("container");
   const pad = n => String(Math.max(0,n)).padStart(2,"0");
   function upd(el,v){
     const p = pad(v);
@@ -19,7 +18,7 @@ const TARGET = new Date("2026-05-01T00:00:00+04:00");
   function tick(){
     const diff = TARGET.getTime() - new Date().getTime();
     if(diff <= 0){
-      container.classList.add("launched");
+      document.body.classList.add("launched");
       upd(els.d,0); upd(els.h,0); upd(els.m,0); upd(els.s,0);
       return;
     }
