@@ -17,17 +17,40 @@ The `package.json` exists only for local server convenience.
 
 ## Run Locally
 
-From the project root:
+After cloning from GitHub:
 
 ```sh
+git clone https://github.com/7mdz9/Solea.git
+cd Solea
 npx serve .
 ```
 
-Other static servers work too:
+Open the URL printed by `serve`, usually:
+
+```text
+http://localhost:3000
+```
+
+If you are working from the original local workspace, do not serve the parent folder. Serve the project folder:
 
 ```sh
+cd /Users/mohamed.alteneiji/Solea/solea-coming-soon
+npx serve .
+```
+
+If you run a static server from `/Users/mohamed.alteneiji/Solea`, the browser may show a directory listing because that parent folder does not contain this project's `index.html`.
+
+Python works too:
+
+```sh
+cd /Users/mohamed.alteneiji/Solea/solea-coming-soon
 python3 -m http.server 8000
-live-server
+```
+
+Then open:
+
+```text
+http://localhost:8000
 ```
 
 You can also open `index.html` directly in a browser. Some browsers may restrict Google Fonts or asset loading from `file://`, so a local HTTP server is the preferred check.

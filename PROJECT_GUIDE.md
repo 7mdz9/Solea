@@ -6,6 +6,34 @@ This is a single-page static site. The page has no framework, no build step, and
 
 The source design came from `Solea_Coming_Soon.html`. The visual design, copy, colors, typography, botanical corner flourishes, countdown structure, and launch target were preserved while the code was split into maintainable files.
 
+## Local Development
+
+Serve the folder that contains `index.html`.
+
+After cloning from GitHub:
+
+```sh
+git clone https://github.com/7mdz9/Solea.git
+cd Solea
+npx serve .
+```
+
+From the original local workspace:
+
+```sh
+cd /Users/mohamed.alteneiji/Solea/solea-coming-soon
+npx serve .
+```
+
+Alternative Python server:
+
+```sh
+cd /Users/mohamed.alteneiji/Solea/solea-coming-soon
+python3 -m http.server 8000
+```
+
+Do not start the server from `/Users/mohamed.alteneiji/Solea`. That parent folder contains the original single-file source and the project folder, but it does not contain this project's `index.html`, so many static servers will show a directory listing instead of the landing page.
+
 ## Files
 
 `index.html`
