@@ -41,11 +41,14 @@
   }
 
   /* Corner botanical flourishes */
-  .corner{position:fixed;width:180px;height:180px;pointer-events:none;z-index:1;opacity:0.38;}
-  .corner.tl{top:28px;left:28px;}
-  .corner.tr{top:28px;right:28px;transform:scaleX(-1);}
-  .corner.bl{bottom:28px;left:28px;transform:scaleY(-1);}
-  .corner.br{bottom:28px;right:28px;transform:scale(-1,-1);}
+  .corner{
+    position:fixed;width:180px;height:180px;pointer-events:none;z-index:1;opacity:0.38;
+    transform-origin:center;backface-visibility:hidden;will-change:transform;
+  }
+  .corner.tl{top:calc(28px + env(safe-area-inset-top));left:calc(28px + env(safe-area-inset-left));}
+  .corner.tr{top:calc(28px + env(safe-area-inset-top));right:calc(28px + env(safe-area-inset-right));transform:scaleX(-1);}
+  .corner.bl{bottom:calc(28px + env(safe-area-inset-bottom));left:calc(28px + env(safe-area-inset-left));transform:scaleY(-1);}
+  .corner.br{bottom:calc(28px + env(safe-area-inset-bottom));right:calc(28px + env(safe-area-inset-right));transform:scale(-1,-1);}
 
   .container{
     position:relative;z-index:2;
@@ -207,8 +210,10 @@
     .logo{width:170px;height:170px;}
     .launch-line{margin-bottom:42px;}
     .corner{width:100px;height:100px;}
-    .corner.tl{top:16px;left:16px;} .corner.tr{top:16px;right:16px;}
-    .corner.bl{bottom:16px;left:16px;} .corner.br{bottom:16px;right:16px;}
+    .corner.tl{top:calc(16px + env(safe-area-inset-top));left:calc(16px + env(safe-area-inset-left));}
+    .corner.tr{top:calc(16px + env(safe-area-inset-top));right:calc(16px + env(safe-area-inset-right));}
+    .corner.bl{bottom:calc(16px + env(safe-area-inset-bottom));left:calc(16px + env(safe-area-inset-left));}
+    .corner.br{bottom:calc(16px + env(safe-area-inset-bottom));right:calc(16px + env(safe-area-inset-right));}
   }
   @media (max-width:480px){
     body{padding:36px 18px;}
