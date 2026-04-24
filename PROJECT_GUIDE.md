@@ -20,9 +20,13 @@ Owns all visual styling, design tokens, layout, animation, and responsive behavi
 
 Owns the countdown calculation and post-launch state. Edit this file only for timer behavior.
 
+`public/assets/logo.png`
+
+Contains the provided source logo image as exact PNG bytes extracted from the original embedded base64 image. The brief referred to an inline logo SVG, but the supplied file used a base64 PNG inside an `<img>`.
+
 `public/assets/logo.svg`
 
-Contains the provided source logo image as an SVG wrapper around the original embedded PNG data. The brief referred to an inline logo SVG, but the supplied file used a base64 PNG inside an `<img>`. The wrapper preserves the exact pixels while keeping the requested asset path.
+Kept as a compatibility/provenance asset because the requested structure named `logo.svg`. The page uses `logo.png` for better transfer size and faster mobile LCP.
 
 `robots.txt`
 
@@ -110,7 +114,7 @@ The countdown depends on the visitor device clock. A server-backed time source w
 
 There is no analytics, tracking, form handling, or third-party service integration.
 
-The logo asset is named `logo.svg` to match the requested structure, but the supplied design source contained a PNG logo. It is preserved inside the SVG file to avoid visual changes.
+The supplied design source contained a PNG logo, not a reusable vector SVG. The PNG is used by the page for performance. `logo.svg` is retained as a compatibility wrapper only.
 
 ## Launch Transition
 
