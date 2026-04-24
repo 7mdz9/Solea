@@ -208,7 +208,57 @@
     .corner.tl{top:16px;left:16px;} .corner.tr{top:16px;right:16px;}
     .corner.bl{bottom:16px;left:16px;} .corner.br{bottom:16px;right:16px;}
   }
-  @media (max-width:380px){
+  @media (max-width:480px){
+    body{padding:36px 18px;}
+    .logo-wrap{margin-bottom:32px;}
+    .logo{width:clamp(120px,36vw,150px);height:clamp(120px,36vw,150px);}
+    .eyebrow{margin-bottom:18px;}
+    .title{font-size:clamp(44px,13vw,52px);}
+    .hairlines{gap:14px;letter-spacing:0.38em;}
+    .hairlines::before,.hairlines::after{max-width:72px;}
+    .tagline{font-size:22px;}
+    .launch-line{margin-bottom:34px;}
+    .countdown{gap:10px;margin-bottom:42px;}
+    .time-unit{padding:22px 10px 18px;}
+    .time-value{font-size:clamp(38px,12vw,46px);}
+    .time-label{letter-spacing:0.3em;}
+    .separator{margin-bottom:28px;}
+    .support-btn{min-height:44px;padding:16px 30px;}
     .contact-details{gap:14px;flex-direction:column;}
+    .contact-item{min-height:44px;}
+    .corner{width:clamp(76px,24vw,96px);height:clamp(76px,24vw,96px);}
+  }
+  @media (max-width:380px){
     .title{font-size:44px;}
+  }
+  @media (min-width:721px) and (max-width:1024px){
+    .corner{width:140px;height:140px;}
+  }
+  @media (min-width:721px) and (max-width:1024px) and (max-height:820px){
+    body{padding:24px;}
+    .logo-wrap{margin-bottom:20px;}
+    .logo{width:140px;height:140px;}
+    .eyebrow{margin-bottom:12px;}
+    .title{font-size:clamp(58px,7vw,76px);margin-bottom:14px;}
+    .hairlines{margin-bottom:18px;}
+    .tagline{margin-bottom:12px;}
+    .launch-line{margin-bottom:28px;}
+    .countdown{margin-bottom:32px;}
+    .time-unit{padding:22px 14px 18px;}
+    .time-value{font-size:clamp(42px,5vw,56px);}
+    .separator{margin-bottom:24px;}
+  }
+  @media (min-width:1025px) and (max-height:850px){
+    body{padding:22px 24px;}
+    .logo-wrap{margin-bottom:20px;}
+    .logo{width:150px;height:150px;}
+    .eyebrow{margin-bottom:12px;}
+    .title{font-size:clamp(72px,7vw,84px);margin-bottom:14px;}
+    .hairlines{margin-bottom:18px;}
+    .tagline{margin-bottom:12px;}
+    .launch-line{margin-bottom:30px;}
+    .countdown{margin-bottom:34px;}
+    .time-unit{padding:22px 14px 18px;}
+    .time-value{font-size:clamp(46px,5vw,60px);}
+    .separator{margin-bottom:24px;}
   }

@@ -7,4 +7,5 @@ node_modules/
 lighthouse-*.json
 
 # Keep generated review screenshots local unless explicitly published.
+reports/*.json
 reports/screenshots/*.png
