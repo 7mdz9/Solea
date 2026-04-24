@@ -78,8 +78,8 @@ When the target time has passed, `scripts/countdown.js` adds `.launched` to `doc
 
 The base layout keeps the original desktop composition. Additional breakpoints cover common modern devices:
 
-- `max-width: 720px`: countdown switches from 4 columns to 2 columns
-- `max-width: 480px`: mobile logo scales to about 30-40% viewport width, contact details stack, corners shrink, and touch targets remain at least 44px tall
+- `max-width: 720px`: countdown remains 4 columns with tighter gaps, smaller numerals, and compact labels
+- `max-width: 480px`: mobile logo scales to about 30-40% viewport width, countdown stays in one row, contact details stack, corners shrink, and touch targets remain at least 44px tall
 - `max-width: 380px`: the title has an extra small-screen guard
 - `721px-1024px`: tablet corner flourishes use a medium size
 - short-height tablet and desktop queries: vertical spacing, logo size, and countdown padding tighten so landscape tablets and 1280x800 laptops stay balanced
