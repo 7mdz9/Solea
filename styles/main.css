@@ -19,6 +19,7 @@
 
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{background:var(--cream);color:var(--ink);font-family:"Inter",sans-serif;font-weight:300;min-height:100vh;-webkit-font-smoothing:antialiased;}
+  html{overflow-y:auto;-webkit-overflow-scrolling:touch;}
 
   body{
     min-height:100vh;
@@ -42,12 +43,12 @@
 
   /* Corner botanical flourishes */
   .corner-frame{
-    position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;
-    contain:layout paint;isolation:isolate;
+    position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:none;
+    width:100vw;height:100vh;height:100dvh;
   }
   .corner{
     position:absolute;width:180px;height:180px;pointer-events:none;opacity:0.38;
-    transform-origin:center;backface-visibility:hidden;will-change:transform;
+    transform-origin:center;backface-visibility:hidden;
   }
   .corner.tl{top:calc(28px + env(safe-area-inset-top));left:calc(28px + env(safe-area-inset-left));}
   .corner.tr{top:calc(28px + env(safe-area-inset-top));right:calc(28px + env(safe-area-inset-right));transform:scaleX(-1);}
