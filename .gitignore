@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+
+# Local server and verification output
+.vercel/
+.netlify/
+lighthouse-*.json
+
+# Keep generated review screenshots local unless explicitly published.
+reports/screenshots/*.png
