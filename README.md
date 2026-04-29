@@ -1,10 +1,17 @@
-# Soléa Coming Soon
+# Solea Coming Soon
 
-Standalone pre-launch landing page for Soléa, serving until pre-orders open on May 1, 2026.
+Standalone coming-soon page for Solea, a sun-inspired café opening in Abu Dhabi on May 1, 2026.
 
 ## Status
 
-This repository contains the temporary coming-soon page only. It is separate from the main Soléa website and can be deployed independently to any static hosting platform.
+This repository contains the temporary pre-launch page only. It is separate from any future full Solea website and can be deployed independently to static hosting.
+
+## Brand
+
+- Name: Solea
+- Tagline: Taste the sun
+- Launch message: Pre-orders begin May 1, 2026 in Abu Dhabi
+- Fonts: DM Serif Display and Inter
 
 ## Tech Stack
 
@@ -31,14 +38,12 @@ Open the URL printed by `serve`, usually:
 http://localhost:3000
 ```
 
-If you are working from the original local workspace, do not serve the parent folder. Serve the project folder:
+From the original local workspace, serve the project folder:
 
 ```sh
 cd /Users/mohamed.alteneiji/Solea/solea-coming-soon
 npx serve .
 ```
-
-If you run a static server from `/Users/mohamed.alteneiji/Solea`, the browser may show a directory listing because that parent folder does not contain this project's `index.html`.
 
 Python works too:
 
@@ -53,7 +58,7 @@ Then open:
 http://localhost:8000
 ```
 
-You can also open `index.html` directly in a browser. Some browsers may restrict Google Fonts or asset loading from `file://`, so a local HTTP server is the preferred check.
+You can also open `index.html` directly in a browser. A local HTTP server is preferred for checking Google Fonts and browser behavior.
 
 ## Deploy
 

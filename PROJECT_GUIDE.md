@@ -2,9 +2,13 @@
 
 ## Architecture
 
-This is a single-page static site. The page has no framework, no build step, and no production JavaScript beyond the countdown timer.
+This is a single-page static coming-soon site for Solea, a sun-inspired café opening in Abu Dhabi on May 1, 2026. The page has no framework, no build step, and no production JavaScript beyond the countdown timer.
 
-The source design came from `Solea_Coming_Soon.html`. The visual design, copy, colors, typography, countdown structure, and launch target were preserved while the code was split into maintainable files. The decorative corner arcs were later removed to keep scrolling behavior consistent across devices.
+The rebrand source lives at `/Users/mohamed.alteneiji/Solea/_rebrand-source.html`. The deployed project keeps the existing multi-file structure:
+
+- `index.html` owns document metadata and markup.
+- `styles/main.css` owns the full visual system, layout, animation, and responsive behavior.
+- `scripts/countdown.js` owns countdown behavior.
 
 ## Local Development
 
@@ -32,29 +36,21 @@ cd /Users/mohamed.alteneiji/Solea/solea-coming-soon
 python3 -m http.server 8000
 ```
 
-Do not start the server from `/Users/mohamed.alteneiji/Solea`. That parent folder contains the original single-file source and the project folder, but it does not contain this project's `index.html`, so many static servers will show a directory listing instead of the landing page.
+Do not start the server from `/Users/mohamed.alteneiji/Solea` unless you intend to inspect the parent workspace. The coming-soon app lives in `/Users/mohamed.alteneiji/Solea/solea-coming-soon`.
 
 ## Files
 
 `index.html`
 
-Owns the document structure, metadata, Google Fonts link, logo image reference, countdown markup, and contact links. Edit this file for copy, metadata, or markup changes.
+Owns the Solea document shell, Google Fonts links, stage markup, inline half-sun logo SVG, wordmark, blurb, countdown markup, launch date, and contact mail link. Edit this file for copy, metadata, or markup changes.
 
 `styles/main.css`
 
-Owns all visual styling, design tokens, layout, animation, and responsive behavior. Edit this file for spacing, typography, color, and breakpoint changes.
+Owns the Solea rebrand visual system: porcelain/oak/stone-moss/olive/earth/terracotta palette, DM Serif Display and Inter font variables, plaster-grain background, stage layout, logo styling, countdown styling, contact styling, animations, reduced-motion handling, and responsive breakpoints.
 
 `scripts/countdown.js`
 
 Owns the countdown calculation and post-launch state. Edit this file only for timer behavior.
-
-`public/assets/logo.png`
-
-Contains the provided source logo image as exact PNG bytes extracted from the original embedded base64 image. The brief referred to an inline logo SVG, but the supplied file used a base64 PNG inside an `<img>`.
-
-`public/assets/logo.svg`
-
-Kept as a compatibility/provenance asset because the requested structure named `logo.svg`. The page uses `logo.png` for better transfer size and faster mobile LCP.
 
 `robots.txt`
 
@@ -70,24 +66,23 @@ Design tokens live at the top of `styles/main.css` in `:root`.
 
 Colors:
 
-- `--cream`, `--cream-deep`, `--cream-soft`
-- `--bronze`, `--bronze-light`, `--bronze-deep`
-- `--sage`, `--sage-light`, `--sage-deep`
-- `--terracotta`, `--terracotta-soft`
-- `--olive-deep`, `--ink`, `--muted`, `--dim`
+- `--porcelain: #EEE9E4`
+- `--oak: #C0AE94`
+- `--stone-moss: #6D705A`
+- `--olive: #4D4738`
+- `--earth: #755F4A`
+- `--terracotta: #B56A4E`
 
 Typography:
 
-- Fraunces for the main wordmark-style title, countdown numerals, date emphasis, and post-launch message
-- Cormorant Garamond italic for the tagline, launch line, and contact details
-- Inter for labels, controls, and structural UI text
+- DM Serif Display for the Solea wordmark, blurb, date, and contact email
+- Inter for body text, labels, tagline, and countdown numerals
 
-Only the used Google Fonts weights are loaded:
+Google Fonts loads:
 
 ```text
-Cormorant Garamond italic 400
-Fraunces 400, 500
-Inter 300, 500
+DM Serif Display roman and italic
+Inter 300, 400, 500
 ```
 
 ## Countdown
@@ -100,38 +95,33 @@ new Date("2026-05-01T00:00:00+04:00")
 
 The timer updates once per second. Values are derived from the visitor device clock, so a wrong local clock can show an inaccurate remaining time. There is no server-side time authority in this static project.
 
-When the target time has passed, `scripts/countdown.js` adds `.launched` to `document.body`, sets all values to zero, hides the countdown through CSS, and reveals the existing post-launch message.
+Countdown values are selected with `[data-unit="days"]`, `[data-unit="hours"]`, `[data-unit="minutes"]`, and `[data-unit="seconds"]` inside `#cd-grid`.
+
+When the target time has passed, `scripts/countdown.js` clears the interval, hides `#cd-grid`, and reveals `#cd-launched`.
 
 ## Responsive Strategy
 
-The base layout keeps the original desktop composition. Additional breakpoints cover common modern devices:
+The layout centers a compact stage with generous vertical spacing. The countdown uses a flexible row with separators. At narrow mobile widths, spacing, unit widths, label tracking, and separator size tighten to keep the countdown readable.
 
-- `max-width: 720px`: countdown remains 4 columns with tighter gaps, smaller numerals, and compact labels
-- `max-width: 480px`: mobile logo scales to about 30-40% viewport width, countdown stays in one row, contact details stack, and touch targets remain at least 44px tall
-- `max-width: 380px`: the title has an extra small-screen guard
-- short-height tablet and desktop queries: vertical spacing, logo size, and countdown padding tighten so landscape tablets and 1280x800 laptops stay balanced
-
-Desktop viewports at 1440px and above keep the original full composition and the 880px content max width.
+Short-height viewports reduce the stage gap and vertical padding.
 
 ## Performance Notes
 
-The page is static and lightweight. CSS and JavaScript are loaded as external files for cacheability and maintainability. The script is deferred.
+The page is static and lightweight. CSS and JavaScript are external files for cacheability and maintainability. The script is deferred.
 
-Google Fonts keep the original font families but load only used weights with `display=swap`.
-
-The logo asset is external so the HTML stays small and the browser can cache it.
+There are no runtime image assets. The sun mark is inline SVG, and the background grain is a small inline SVG data image in CSS.
 
 ## Accessibility
 
-The page keeps `lang="en"` and uses visible labels for links. The logo image has alt text. Decorative SVGs and inline icons are hidden from assistive technology.
+The page uses `lang="en"` and readable text links. Decorative SVGs are hidden from assistive technology with `aria-hidden="true"`.
 
-The countdown container has:
+The countdown section has:
 
 ```html
 aria-live="polite"
 ```
 
-This lets assistive technology receive timer updates without interrupting the user.
+This lets assistive technology receive timer updates without interrupting the user. Motion is disabled for users who prefer reduced motion.
 
 ## Known Limitations
 
@@ -139,10 +129,8 @@ The countdown depends on the visitor device clock. A server-backed time source w
 
 There is no analytics, tracking, form handling, or third-party service integration.
 
-The supplied design source contained a PNG logo, not a reusable vector SVG. The PNG is used by the page for performance. `logo.svg` is retained as a compatibility wrapper only.
-
 ## Launch Transition
 
-On May 1, 2026, deploy the main Soléa launch or pre-order site to the production domain. This coming-soon repository can then be archived or kept as a historical static page.
+On May 1, 2026, deploy the main Solea launch or pre-order site to the production domain. This coming-soon repository can then be archived or kept as a historical static page.
 
 If the same domain is reused, replace the deployment target with the main site rather than modifying this temporary page into a full product site.
