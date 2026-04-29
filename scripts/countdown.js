@@ -1,31 +1,44 @@
-const TARGET = new Date("2026-05-01T00:00:00+04:00");
-  const els = {
-    d: document.getElementById("days"),
-    h: document.getElementById("hours"),
-    m: document.getElementById("minutes"),
-    s: document.getElementById("seconds"),
+(function () {
+  const target = new Date("2026-05-01T00:00:00+04:00").getTime();
+  const grid = document.getElementById("cd-grid");
+  const launched = document.getElementById("cd-launched");
+  const nodes = {
+    days:    grid.querySelector('[data-unit="days"]'),
+    hours:   grid.querySelector('[data-unit="hours"]'),
+    minutes: grid.querySelector('[data-unit="minutes"]'),
+    seconds: grid.querySelector('[data-unit="seconds"]')
   };
-  const pad = n => String(Math.max(0,n)).padStart(2,"0");
-  function upd(el,v){
-    const p = pad(v);
-    if(el.textContent !== p){
-      el.textContent = p;
-      el.classList.remove("flip");
-      void el.offsetWidth;
-      el.classList.add("flip");
-    }
-  }
-  function tick(){
-    const diff = TARGET.getTime() - new Date().getTime();
-    if(diff <= 0){
-      document.body.classList.add("launched");
-      upd(els.d,0); upd(els.h,0); upd(els.m,0); upd(els.s,0);
+  const last = {};
+  let intervalId = 0;
+
+  const fmt = (key, val) => key === "days" ? String(val) : String(val).padStart(2, "0");
+
+  const setVal = (key, val) => {
+    const node = nodes[key];
+    const text = fmt(key, val);
+    if (last[key] === text) return;
+    node.textContent = text;
+    node.classList.remove("ticked");
+    void node.offsetWidth; // restart animation
+    node.classList.add("ticked");
+    last[key] = text;
+  };
+
+  const update = () => {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      window.clearInterval(intervalId);
+      grid.hidden = true;
+      launched.hidden = false;
       return;
     }
-    upd(els.d, Math.floor(diff / 86400000));
-    upd(els.h, Math.floor((diff / 3600000) % 24));
-    upd(els.m, Math.floor((diff / 60000) % 60));
-    upd(els.s, Math.floor((diff / 1000) % 60));
-  }
-  tick();
-  setInterval(tick, 1000);
+    const totalSec = Math.floor(diff / 1000);
+    setVal("days",    Math.floor(totalSec / 86400));
+    setVal("hours",   Math.floor((totalSec % 86400) / 3600));
+    setVal("minutes", Math.floor((totalSec % 3600) / 60));
+    setVal("seconds", totalSec % 60);
+  };
+
+  update();
+  intervalId = window.setInterval(update, 1000);
+})();
